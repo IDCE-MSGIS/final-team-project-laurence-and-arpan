@@ -192,3 +192,59 @@ for day in forecast_list:
     day = day.replace('F:','F')
     print day
     https://www.worldometers.info/world-population/kenya-population/
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+# import required libraries
+import requests
+from bs4 import BeautifulSoup
+
+# List to store response
+forecast = []
+
+## Provide the latitude and longitude for the location you would like to check the forecast for
+## Lat/lon in decimal degrees provided for Worcester, MA
+lat = '42.2634'
+lon = '-71.8022'
+
+# Create url for the requested location through string concatenation
+url = 'https://www.worldometers.info/world-population/kenya-population/'
+
+# Send request to retrieve the web-page using the get() function from the requests library
+# The page variable stores the response from the web-page
+page = requests.get(url)
+
+# Create a BeautifulSoup object with the response from the URL
+# Access contents of the web-page using .content
+# html_parser is used since our page is in HTML format
+soup=BeautifulSoup(page.content,"html.parser")
+
+# Locate elements on page to be scraped
+# findAll() locates all occurrences of div tag with the given class name
+# stores it in the BeautifulSoup object
+population = soup.findAll("span", {"class": ""})
+
+for strings in population:
+  print strings
+
+#####This KIND OF works. It gives back too much information, but the right information is there. I might try to mess with it more
+###### but I THINK we could use this and then just use replace functions to pull out the numbers? does that seen like it makes any sense?
