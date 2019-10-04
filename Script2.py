@@ -25,8 +25,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-# List to store response
-forecast = []
+country= str(input("Enter country name: "))
+country=country.lower()
 
 # Create url for the requested location through string concatenation
 url = 'https://www.worldometers.info/world-population/kenya-population/'
