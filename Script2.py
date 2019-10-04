@@ -331,5 +331,41 @@ for i in population:
   print (i.text)
   
   
+
+
+
+import requests
+from bs4 import BeautifulSoup
+
+# List to store response
+#forecast = []
+
+## Provide the latitude and longitude for the location you would like to check the forecast for
+## Lat/lon in decimal degrees provided for Worcester, MA
+#lat = '42.2634'
+#lon = '-71.8022'
+country= str(input("Enter country name: "))
+country=country.lower()
+# Create url for the requested location through string concatenation
+url = 'https://www.worldometers.info/world-population/'+country+'-population/'
+
+# Send request to retrieve the web-page using the get() function from the requests library
+# The page variable stores the response from the web-page
+page = requests.get(url)
+
+# Create a BeautifulSoup object with the response from the URL
+# Access contents of the web-page using .content
+# html_parser is used since our page is in HTML format
+soup=BeautifulSoup(page.content,"html.parser")
+
+# Locate elements on page to be scraped
+# findAll() locates all occurrences of div tag with the given class name
+# stores it in the BeautifulSoup object
+population = soup.findAll("div", {"class":"col-md-8 country-pop-description"})
+for i in population:
+  x= (i.text)
+  y= x.split(' ')[7]
+print ("The Current Population of "+country.upper+" today is: "+y)
+
   
   
