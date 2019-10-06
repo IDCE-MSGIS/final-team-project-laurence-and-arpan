@@ -8,8 +8,9 @@
 For the first script, we are given an existing script gave a weather forecast for Worcester, Ma and edit it to be able to input any latitude and longitude and get back a weather forecast for that area. Lines of code needed to be added to take the latitude and longitude as inputs. The code then takes that input, puts it into a url and uses requests.get to access the website that relates to our coordinates. It then uses BeautifulSoup to access the content on the page. It uses soup.findAll() function to pull out the data that we want and then create a list using a “for” loop, .text, and .append. We then use day.replace() to replace certain words and add spaces. Although, adding spaces before some words like ‘showers’ in ‘ChanceShowers’ caused problem with alignment when ‘Shower’ was printed as first word of a sentence ( Showers likely high, Showers low). We also used day.upper() to capitalize the output and to make the data more presentable.
 
 
-## Final Project: Script 2
-### 
+## Final Project: Script 2(
+## Our function takes Country names as input and will tell you the current population of that country according to www.worldometers.info
+
 
 ## Final Project: Documentation
 ## Script 2:
