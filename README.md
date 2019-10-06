@@ -1,35 +1,24 @@
 ## Final Project: Script 1
 ### Web-scraping Weather Forecast Information with Python
-In this lab, you will work with a script that scrapes the 5-day weather forecast from the National Weather Service website. The script extracts information from multiple elements listed under the same class name using the BeautifulSoup library. 
+## Laurence SanBoeuf, Arpan Parashar
+## Final Project
+## Time to complete: 1 Hour
 
-- Copy the **NWS_WeatherForecast.py** file and paste it into the online Python compiler: https://repl.it/languages/python
-Make sure you are using Python version 2.7. You can check the Python version in the compiler window on the right.
+## Script 1:
+For the first script, we are given an existing script gave a weather forecast for Worcester, Ma and edit it to be able to input any latitude and longitude and get back a weather forecast for that area. Lines of code needed to be added to take the latitude and longitude as inputs. The code then takes that input, puts it into a url and uses requests.get to access the website that relates to our coordinates. It then uses BeautifulSoup to access the content on the page. It uses soup.findAll() function to pull out the data that we want and then create a list using a “for” loop, .text, and .append. We then use day.replace() to replace certain words and add spaces. Although, adding spaces before some words like ‘showers’ in ‘ChanceShowers’ caused problem with alignment when ‘Shower’ was printed as first word of a sentence ( Showers likely high, Showers low). We also used day.upper() to capitalize the output and to make the data more presentable.
 
-- Read the description and comments in the script to understand the purpose of the script
-
-- Run the script. You will see some packages being installed in the compiler window when you run it for the first time.
-
-- The script returns the 5-day forecast for Worcester, MA (Lat: 42.2634, Lon: -71.8022) with the latitude and longitude information provided. Using the latitude and longitude values, it generates the following URL through string concatenation: https://forecast.weather.gov/MapClick.php?lat=42.2634&lon=-71.8022
-
-- Open this URL in a Firefox or Chrome browser. Locate the information that is being outputted in our script. Right click on this and select the Inspect Element option. This will launch the Inspector window that helps locate different elements on the page.
-
-- Notice that all forecast containers in this section are located in the _forecast-tombstone_ class inside the _li_ tag. In order to scrape multiple elements listed under the same class name, we utilize the _findAll()_ function from BeautifulSoup. The tag and class names are required arguments for this function.
-
-### Edit the NWS_ WeatherForecast.py script to add the following functionality:
-1. Take latitude and longitude values as inputs in decimal degrees from user
-
-2.	Convert the latitude and longitude values to strings to generate the URL for the selected location. Pass this URL as an argument in the _get()_ request.
-
-3.	The returned forecast information did not preserve its spacing during the scraping process. Using the _replace()_ function, fix any spacing issues with the output
-
-4.	Convert the final output to uppercase
-
-Remember to update the Script1.py file to include comments and documentation in your script to tell me what it’s doing!
 
 ## Final Project: Script 2
-### Your Chosen Assignment
-For this script, you will complete the assignment that you have proposed, which involves modifying a previous exercise. Remember to update the Script2.py file to include comments and documentation in your script to tell me what it’s doing!
+### 
 
 ## Final Project: Documentation
-### Changing this README
-Your write-up will be here, on this README page. You will need to edit this page with your new text: you do **not** need to keep these instructions on your README! 
+## Script 2:
+For our second script, we took the lab on web-scraping and used this to create a function that allows users to input a country name and receive the current population back. We took our data from wordometers.info.
+
+The code takes the country name as input, uses country.lower() to deal with input variation. The name is then put into the URL which has a temporary variable in the place of the country name. requests.get() accessed the website and BeautifulSoup allows access to the page content. Soup.findAll() pulls a paragraph from the site that has data on the country population. X.split(), splits the paragraph and an index value pulls the string that has the population value and a print function returns the value back to the user.
+While trying to write this script we ran into a few issues. First, we had a problem where the site that we chose would not allow us to scrape the data. In the script, the data was visible and looked as though it was text, but it would not allow us to call it. The output would include headers and accompanying script around the data, but the data itself was missing. The TA, Priyanka, and Stack Overflow pointed out that many sites put their data in a form that cannot be scraped so we chose another site.
+Another problem we had was related to trying to index the paragraph that was pulled from the site. The entire paragraph was at index [0]. So we found the .split() function, which basically makes an index out of the string, and you can input how you want it to split. 
+In the paragraph, the population value came after a comma, so we split by commas. We got the population value back, but we were also getting everything up to the next comma. We discussed how to split again after the population value but every country would have a different number as the final integer in the population value, and the length of the population values were different by country as well, India has a population value with a length of 10 digits while Namibia has a population value with a length of 7 digits. So, we split by spaces instead of commas to work around this. 
+
+There were also some issues that were not resolved, related to the naming convention for the countries on the worldometers.info. Most countries have a one-word name, and this is how it shows in the URL, but some countries have two or more words in their name, New Zealand, Cote d’Ivoire, Sierra Leone, and the URL has a “-“ in between each word in the name. Some country names are less standard. United States is listed as “US” in the URL. Democratic Republic of Congo is listed as DR Congo, and Czech Republic is listed as Czechia. Our current function must take the input exactly how it appears in the URL. These issues could be addressed by creating some sort of dictionary that has pairs of names: US, United States; Czech Republic, Czechia. When the user input a country name, the function would search the list for the name and use then find the proper name for each country before running the rest of the code. There is also an option to make a drop-down list, where you could choose the country instead of typing it in, completely removing any naming conflicts. 
+
