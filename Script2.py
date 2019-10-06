@@ -1,4 +1,4 @@
-# Name: Laurence SanBoeuf, Arpan _
+# Name: Laurence SanBoeuf, Arpan Parashar
 # Assignment title: Final Project
 # Time to complete: ...
 # Description: Our function takes Country names as input and will tell you the current population of that country.
@@ -9,12 +9,12 @@
 # Tells python what encoding the string is stored in
 
 
-
+#imports Python libraries
 import requests
 from bs4 import BeautifulSoup 
 
-country= str(input("Enter country name: "))
-country=country.lower()
+country= str(input("Enter country name: "))                 #Asks the user to input country name 
+country=country.lower()                                     #Converts country name to lower case to make it acceptable in the website url
 
 # Create url for the requested location through string concatenation
 url = 'https://www.worldometers.info/world-population/'+country+'-population/'
@@ -29,11 +29,11 @@ page = requests.get(url)
 soup=BeautifulSoup(page.content,"html.parser")
 
 
-population = soup.findAll("div", {"class":"col-md-8 country-pop-description"})  #this line pulls out a paragraph from the site
-for i in population:    
-  x= (i.text)
-  y= x.split(' ')[7]     #these three lines split out code, split by " 's" and then call back the 7th spot.
-print ("The Current Population of "+country.capitalize()+" today is: "+y)  #return value
+population = soup.findAll("div", {"class":"col-md-8 country-pop-description"})  #This line scraps out a paragraph containing population data from the website
+for i in population:                                                            
+  x= (i.text)                                                                   #Extracts text information from mixed data
+  y= x.split(' ')[7]                                                            #This line split out code, split by " 's"(spaces) and then call back the 7th spot.
+print ("The Current Population of "+country.capitalize()+" is: "+y)       #Returns population value with capitalized first letter of country name
 
 
   
