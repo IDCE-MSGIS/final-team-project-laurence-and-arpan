@@ -1,4 +1,7 @@
-# Place necessary comments and code here. 
+# Name- Laurence SanBoeuf, Arpan Parashar
+# Assignment title- Web-scraping weather forecast for the location entered by the user.
+# Time taken- 1 Hour 30 minutes
+# Description- This code scraps five-day weather data from the US weather forecast website for a location entered by its latitude and longitude by the user.
 '''
 # Assignment title: Final Project- Web-scraping Weather Forecast
 # Date: 09/23/2019
@@ -14,7 +17,7 @@ from bs4 import BeautifulSoup
 # List to store response
 forecast = []
 
-## Provide the latitude and longitude for the location you would like to check the forecast for
+# Provide the latitude and longitude for the location you would like to check the forecast for
 lat = str(input("Please enter the Latitude: "))
 lon = str(input("Please enter the Longitude: "))
 
@@ -44,8 +47,8 @@ for i in weather_forecast:
     forecast.append(i)
 
 # Print list to remove unicode characters
-for day in forecast:
-    day = day.replace('Low', ' Low')
+for day in forecast:                          #These lines of code add spaces before, after and between the words to manipulate strings and make the output more presentable.
+    day = day.replace('Low', ' Low')                        
     day = day.replace('High', ' High')
     day = day.replace('and', ' and')
     day = day.replace('Night', ' Night')
@@ -54,4 +57,4 @@ for day in forecast:
     day = day.replace('Scattered','Scattered ')
     day = day.replace('Clouds',' Clouds')
     day = day.replace('Likely', ' Likely')
-    print day.upper()
+    print day.upper()                         #Converts and prints output in Upper Case
