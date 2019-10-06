@@ -1,7 +1,7 @@
 # Name: Laurence SanBoeuf, Arpan Parashar
-# Assignment title: Final Project
-# Time to complete: ...
-# Description: Our function takes Country names as input and will tell you the current population of that country.
+# Assignment title: Final Project(Web-scraping current population for an entered country name)
+# Time to complete: 4 Hours
+# Description: Our function takes Country names as input and will tell you the current population of that country according to www.worldometers.info
 
 
 # -*- coding: utf-8 -*-
