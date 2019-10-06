@@ -1,14 +1,7 @@
 # Name: Laurence SanBoeuf, Arpan _
 # Assignment title: Final Project
 # Time to complete: ...
-# Description:
-
-
-
-# = These are notes related to the code
-### = These are notes specifically related to our project; stuff that needs to be looked at
-
-
+# Description: Our function takes Country names as input and will tell you the current population of that country.
 
 
 # -*- coding: utf-8 -*-
@@ -17,12 +10,8 @@
 
 
 
-###########################################################################
-
-
-
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup 
 
 country= str(input("Enter country name: "))
 country=country.lower()
@@ -40,12 +29,11 @@ page = requests.get(url)
 soup=BeautifulSoup(page.content,"html.parser")
 
 
-
-population = soup.findAll("div", {"class":"col-md-8 country-pop-description"})
-for i in population:
+population = soup.findAll("div", {"class":"col-md-8 country-pop-description"})  #this line pulls out a paragraph from the site
+for i in population:    
   x= (i.text)
-  y= x.split(' ')[7]
-print ("The Current Population of "+country.capitalize()+" today is: "+y)
+  y= x.split(' ')[7]     #these three lines split out code, split by " 's" and then call back the 7th spot.
+print ("The Current Population of "+country.capitalize()+" today is: "+y)  #return value
 
 
   
