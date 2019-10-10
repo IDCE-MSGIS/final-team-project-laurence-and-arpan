@@ -13,7 +13,7 @@
 import requests
 from bs4 import BeautifulSoup 
 
-country= str(input("Enter country name: "))                 #Asks the user to input country name 
+country= raw_input("Enter country name: ")                 #Asks the user to input country name
 country=country.lower()                                     #Converts country name to lower case to make it acceptable in the website url
 
 # Create url for the requested location through string concatenation
